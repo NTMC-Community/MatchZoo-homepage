@@ -15,9 +15,7 @@ export default class Tutorials extends Component {
   render() {
     return (
       <div className="tutorials-page" style={{ background: '#fff' }}>
-        <div className="tutorials-header" style={{ background: '#66B3FF' }}>
-        <Header  style={{ background: '#66B3FF' }}/>
-        </div>
+        <Header />
         <br />
         <br />
         <MarkdownDocs />
