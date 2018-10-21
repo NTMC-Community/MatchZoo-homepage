@@ -18,6 +18,8 @@ export default class Tutorials extends Component {
         <Header />
         <br />
         <br />
+        <br />
+        <br />
         <MarkdownDocs />
         <Footer />      
       </div>

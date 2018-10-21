@@ -11,65 +11,66 @@ const MENUS = [
   },
   {
     name: 'Tutorials',
-    path: '#/tutorials',
+    //path: '#/tutorials',
+    path: 'https://nbviewer.jupyter.org/github/NTMC-Community/MatchZoo/blob/2.0/notebooks/wikiqa/dssm.ipynb',
   },
   
   {
     name: 'Documentation',
     path: 'https://matchzoo.readthedocs.io/en/2.0/',
   },
-  {
-    name: 'Team & Paterners',
-    path: '#/team',
-  },
-  {
-    name: '物料',
-    children: [
-      {
-        name: '组件',
-        path: '/ice/component/button',
-      },
-      {
-        name: '区块',
-        path: '/ice/block',
-      },
-      {
-        name: '布局',
-        path: '/ice/layout',
-      },
-      {
-        name: '模板',
-        path: '/ice/scaffold',
-      },
-    ],
-  },
-  {
-    name: '工具',
-    children: [
-      {
-        name: 'ICEWORKS',
-        path: '/ice/iceworks',
-      },
-      {
-        name: 'Playground',
-        path: '/ice/playground',
-      },
-    ],
-  },
-  {
-    name: 'Community',
-    children: [
-      {
-        name: '知乎专栏',
-        path: 'https://zhuanlan.zhihu.com/ice-design',
-      },
-      {
-        name: '万能群',
-        path:
-          require('./images/ice-group.png'),
-      },
-    ],
-  },
+  // {
+  //   name: 'Team & Paterners',
+  //   path: '#/team',
+  // },
+  // {
+  //   name: '物料',
+  //   children: [
+  //     {
+  //       name: '组件',
+  //       path: '/ice/component/button',
+  //     },
+  //     {
+  //       name: '区块',
+  //       path: '/ice/block',
+  //     },
+  //     {
+  //       name: '布局',
+  //       path: '/ice/layout',
+  //     },
+  //     {
+  //       name: '模板',
+  //       path: '/ice/scaffold',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: '工具',
+  //   children: [
+  //     {
+  //       name: 'ICEWORKS',
+  //       path: '/ice/iceworks',
+  //     },
+  //     {
+  //       name: 'Playground',
+  //       path: '/ice/playground',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Community',
+  //   children: [
+  //     {
+  //       name: '知乎专栏',
+  //       path: 'https://zhuanlan.zhihu.com/ice-design',
+  //     },
+  //     {
+  //       name: '万能群',
+  //       path:
+  //         require('./images/ice-group.png'),
+  //     },
+  //   ],
+  // },
 ];
 
 export default class Header extends Component {
@@ -118,13 +119,13 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className="header-container" style={{ background: '#66B3FF' }}>
+      <div className="header-container" style={{ background: '#141415' }}>
         <div className="header-content">
           <Logo />
           <div className="header-navbar">
-            <div className="header-search-input">
+            {/* <div className="header-search-input">
               <Input placeholder="全局搜索" />
-            </div>
+            </div> */}
             <Menu className="header-navbar-menu" mode="horizontal">
               {this.renderMenuItem()}
             </Menu>

@@ -10,6 +10,7 @@ const brandlist = [
   require('./images/tsinghua.jpg'),
   require('./images/udel.png'),
   require('./images/cmu.png'),
+  require('./images/CAS.jpg'),
   // require('./images/TB1m7veieuSBuNjSsziXXbq8pXa-262-62.png'),
   // require('./images/TB10Mjkib1YBuNjSszhXXcUsFXa-208-76.png'),
   // require('./images/TB1zdJliDtYBeNjy1XdXXXXyVXa-184-76.png'),
@@ -53,7 +54,7 @@ export default class BrandList extends Component {
             );
           })}
         </div>
-        <div style={styles.extraInfo}>
+        {/* <div style={styles.extraInfo}>
           <Button
             component="a"
             href="https://github.com/alibaba/ice/issues/156"
@@ -62,7 +63,7 @@ export default class BrandList extends Component {
           >
             提交你的案例 +
           </Button>
-        </div>
+        </div> */}
       </div>
     );
   }

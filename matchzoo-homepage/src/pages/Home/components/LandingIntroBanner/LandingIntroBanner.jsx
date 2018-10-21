@@ -21,13 +21,13 @@ export default class LandingIntroBanner extends Component {
           className="landing-intro-banner-background"
           style={{
             backgroundImage:
-              `url(${require('./images/TB1cWGdnXGWBuNjy0FbXXb4sXXa-1900-898.png')})`,
+              `url(${require('./images/Intro-HELLO-FUTURE-1920x1080_v2.gif')})`,
             backgroundPosition: 'center',
           }}
         />
         <div className="landing-intro-banner-content-wrapper">
           <div className="landing-intro-banner-content">
-            <h2 style={styles.title}>Best toolkit for text matching</h2> 
+            <h2 style={styles.title}>Deep learning for semantic matching</h2> 
             <p style={styles.subTitle}>
             It is developed with a focus on facilitating the designing, comparing and sharing of deep text matching models.
             </p>
@@ -35,22 +35,7 @@ export default class LandingIntroBanner extends Component {
               className="landing-intro-banner-buttons"
               style={{ textAlign: 'center', marginTop: 70 }}
             >
-              <a href="//alibaba.github.io/ice/block" style={styles.leftButton}>
-                <Button
-                  style={{
-                    height: 50,
-                    padding: '0 58px',
-                    fontSize: 16,
-                    marginBottom: '20px',
-                    color: '#3080FE',
-                  }}
-                  size="large"
-                  type="normal"
-                >
-                  查看海量物料
-                </Button>
-              </a>
-              <a href="#/tutorials">
+            {/* <a href="#/tutorials">
                 <Button
                   style={{
                     height: 50,
@@ -63,7 +48,25 @@ export default class LandingIntroBanner extends Component {
                 >
                   Get Started
                 </Button>
+              </a> */}
+              <a href="#/tutorials" style={styles.leftButton}>
+                <Button
+                  style={{
+                    height: 50,
+                    padding: '0 58px',
+                    fontSize: 16,
+                    marginBottom: '20px',
+                    // color: '#3080FE',
+                    color:'#333333',
+                    fontWeight: 'bold',
+                  }}
+                  size="large"
+                  type="normal"
+                >
+                  Get Started
+                </Button>
               </a>
+              
             </div>
 
             <div style={{ marginTop: '80px', position: 'relative' }}>

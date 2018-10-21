@@ -18,16 +18,15 @@ export default class IntroWithBackground extends Component {
     return (
       <div style={styles.wrapper}>
         <div style={styles.inntroContent}>
-          <h3 style={styles.title}>海量物料</h3>
+          <h3 style={styles.title}>Team</h3>
           <div style={styles.titleLine}>
             <div style={styles.titleHighlightLine} />
           </div>
           <p style={styles.desc}>
-            专业视觉设计，每周物料更新，丰富组合区块，不同领域模板
-            自定义主题配置，响应式设计，海量物料满足您开发所需
+          Neural Text Matching Community is backed by a group of researchers, engineers and students. We
           </p>
           <Link to="">
-            <Button style={styles.extraButton}>了解更多 &gt;</Button>
+            <Button style={styles.extraButton}>Learn more &gt;</Button>
           </Link>
         </div>
         <div style={styles.background}>

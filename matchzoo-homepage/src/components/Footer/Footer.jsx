@@ -15,7 +15,7 @@ export default () => {
       }}
     >
       <div style={{ filter: 'grayscale(100%)', opacity: 0.3 }}>
-        <Logo isDark />
+        {/* <Logo isDark /> */}
       </div>
       <div
         style={{
@@ -25,7 +25,7 @@ export default () => {
           textAlign: 'right',
         }}
       >
-        matchzoo team
+        neural text matching community
         <br />
         © 2018 copyright
       </div>

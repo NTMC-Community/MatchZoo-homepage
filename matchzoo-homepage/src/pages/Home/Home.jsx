@@ -21,7 +21,7 @@ export default class Home extends Component {
         <Header />
         <LandingIntroBanner />
         <IceworksInfo />
-        <DesignLanguage />
+        {/* <DesignLanguage /> */}
         <Materials />
         <BrandList />
         <Footer />

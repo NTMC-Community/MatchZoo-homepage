@@ -3,46 +3,94 @@ import ReactMarkdown from 'react-markdown';
 import './MarkdownDocs.scss';
 
 const initialSource = `
+  
+# MatchZoo
 
-## 产品定位
-
-支付宝小程序是一种全新的开放模式，它运行在支付宝客户端，可以被便捷地获取和传播，为终端用户提供更优的用户体验。小程序开放给开发者更多的JSAPI和OpenAPI能力，通过小程序可以为用户提供多样化便捷服务。
-
-支付宝小程序开放给企业帐号，想要成为支付宝小程序开发者，需要完成注册、入驻以及小程序创建三步。
+> MatchZoo is a toolkit for text matching. It was developed with a focus on facilitating the designing, comparing and sharing of deep text matching models.
 
 
-## 第一步：注册
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Documentation Status](http://readthedocs.org/projects/matchzoo/badge/?version=2.0)](https://matchzoo.readthedocs.io/en/2.0/?badge=2.0)
+[![Build Status](https://travis-ci.org/NTMC-Community/MatchZoo.svg?branch=2.0)](https://travis-ci.org/NTMC-Community/MatchZoo/)
+[![codecov](https://codecov.io/gh/NTMC-Community/MatchZoo/branch/2.0/graph/badge.svg)](https://codecov.io/gh/NTMC-Community/MatchZoo)
+[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Requirements Status](https://requires.io/github/NTMC-Community/MatchZoo/requirements.svg?branch=2.0)](https://requires.io/github/NTMC-Community/MatchZoo/requirements/?branch=2.0)
+---
 
-* 用【企业支付宝账号】登录开放平台 ；
-* 进入【小程序公测首页】 申请小程序公测，审核时间为1个工作日；
+## Get Started in 60 Seconds
 
-> 注意1：公测期间尚未开放个人支付宝账户
-> 注意2：未注册企业支付宝账号请访问：注册企业支付宝账号
+First, import modules and prepare input data.
 
-## 第二步：入驻
+\`\`\`python
+from matchzoo import preprocessor
+from matchzoo import generators
+from matchzoo import models
 
-使用企业支付宝账户登录，依照入驻指引选择自己入驻的身份角色，完善身份信息，签署平台服务协议，成为开放平台合作伙伴。
+train = [
+    ("id0", "id1", "beijing", "Beijing is capital of China", 1),
+    ("id0", "id2", "beijing", "China is in east Asia", 0),
+    ("id0", "id3", "beijing", "Summer in Beijing is hot.", 1)
+]
+test = [
+    ("id0", "id4", "beijing", "I visted beijing yesterday.")
+]
+\`\`\`
 
-**1. 支付宝账号登录**
+Preprocess your input data in three lines of code, keep track parameters to be passed into the model.
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/e3ecca36714dd5d0cc8ecca0f84c000a.png)
+\`\`\`python
+dssm_preprocessor = preprocessor.DSSMPreprocessor()
+processed_tr = dssm_preprocessor.fit_transform(train, stage='train')
+processed_te = dssm_preprocessor.fit_transform(test, stage='test')
+# DSSM expect dimensionality of letter-trigrams as input shape.
+# The fitted parameters has been stored in \`context\` during preprocessing on training data.
+input_shapes = processed_tr.context['input_shapes']
+\`\`\`
 
-**2. 选择入驻身份**
+Use MatchZoo \`generators\` module to generate \`point-wise\`, \`pair-wise\` or \`list-wise\` inputs into batches.
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/b39b0dfa0c13882e4ab7377fc9f194d0.png)
+\`\`\`python
+generator_tr = generators.PointGenerator(processed_tr)
+generator_te = generators.PointGenerator(processed_te)
+# Example, train with generator, test with the first batch.
+X_te, y_te = generator_te[0]
+\`\`\`
 
-**3. 完善信息**
+Train a [Deep Semantic Structured Model](https://www.microsoft.com/en-us/research/project/dssm/), make predictions on test data.
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/af51a6e5c4c41089588b8a2ea9f4c993.png)
+\`\`\`python
+dssm_model = models.DSSMModel()
+dssm_model.params['input_shapes'] = input_shapes
+dssm_model.guess_and_fill_missing_params()
+dssm_model.build()
+dssm_model.compile()
+dssm_model.fit_generator(generator_tr)
+# Make predictions
+predictions = dssm_model.predict([X_te.text_left, X_te.text_right])
+\`\`\`
 
-## 第三步：登录小程序管理中心
+For detailed usage, such as hyper-parameters, model persistence, evaluation, please check our documention: [English](https://matchzoo.readthedocs.io/en/2.0/) [中文](https://matchzoo.readthedocs.io/zh/latest/)
 
-完成注册后，可以选择以下渠道进入小程序管理中心：
+If you're interested in the cutting-edge research progress, please take a look at [awaresome neural models for semantic match](https://github.com/NTMC-Community/awaresome-neural-models-for-semantic-match).
 
-* 通过小程序首页,点击“登录管理中心”，进入小程序管理中心，开始【创建小程】
-* 通过开放平台首页,点击"登录"，进入开放平台管理中心，选择“开发者中心／小程序”，开始【创建小程序】
+## Install
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/5272d5041de283125ac03428a6e0ed4f.png)`;
+MatchZoo is dependent on [Keras](https://github.com/keras-team/keras), please install one of its backend engines: TensorFlow, Theano, or CNTK. We recommend the TensorFlow backend. Two ways to install MatchZoo:
+
+**Install MatchZoo from Pypi:**
+
+\`\`\`python
+pip install matchzoo
+\`\`\`
+
+**Install MatchZoo from the Github source:**
+
+\`\`\`python
+git clone https://github.com/NTMC-Community/MatchZoo.git
+cd MatchZoo
+python setup.py install
+\`\`\`
+`;
 
 export default class MarkdownDocs extends Component {
   static displayName = 'MarkdownDocs';

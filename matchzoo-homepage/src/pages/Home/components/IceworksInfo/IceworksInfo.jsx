@@ -24,10 +24,10 @@ export default class ProductIntro extends Component {
               <div style={styles.titleHighlightLine} />
             </div>
             <p style={styles.desc}>
-            MatchZoo is a toolkit for text matching. It was developed with a focus on facilitating the designing, comparing and sharing of deep text matching models. There are a number of deep matching methods, such as DRMM, MatchPyramid, MV-LSTM, aNMM, DUET, ARC-I, ARC-II, DSSM, and CDSSM, designed with a unified interface (collection of papers: awesome-neural-models-for-semantic-match). Potential tasks related to MatchZoo include document retrieval, question answering, conversational response ranking, paraphrase identification, etc. We are always happy to receive any code contributions, suggestions, comments from all our MatchZoo users.
+            MatchZoo is a toolkit for text matching. It was developed with a focus on facilitating the designing, comparing and sharing of deep text matching models. There are a number of deep matching methods, such as DRMM, MatchPyramid, MV-LSTM, aNMM, DUET, ARC-I, ARC-II, DSSM, and CDSSM, designed with a unified interface. Potential tasks related to MatchZoo include document retrieval, question answering, conversational response ranking, paraphrase identification, etc.
             </p>
-            <Link to="">
-              <Button style={styles.extraButton}>Learn more &gt;</Button>
+            <Link to="Privew">
+              <Button style={styles.extraButton}>Learn More &gt;</Button>
             </Link>
           </div>
           <div style={styles.productSnapshot}>
