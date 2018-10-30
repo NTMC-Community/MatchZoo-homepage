@@ -4,13 +4,14 @@ import React, { Component } from 'react';
 
 const brandlist = [
   require('./images/cloudbrain.png'),
-  require('./images/umass.jpg'),
+  require('./images/CAS_ICT.jpg'),
+  require('./images/umas.png'),
   require('./images/usst.png'),
   require('./images/zhongshan_university.jpg'),
   require('./images/tsinghua.jpg'),
   require('./images/udel.png'),
   require('./images/cmu.png'),
-  require('./images/CAS.jpg'),
+  
   // require('./images/TB1m7veieuSBuNjSsziXXbq8pXa-262-62.png'),
   // require('./images/TB10Mjkib1YBuNjSszhXXcUsFXa-208-76.png'),
   // require('./images/TB1zdJliDtYBeNjy1XdXXXXyVXa-184-76.png'),

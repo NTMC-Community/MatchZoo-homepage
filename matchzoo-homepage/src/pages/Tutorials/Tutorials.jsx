@@ -20,7 +20,9 @@ export default class Tutorials extends Component {
         <br />
         <br />
         <br />
-        <MarkdownDocs />
+        <div style={{margin:'5% 5%',align:"center"}}> 
+        <MarkdownDocs style={{margin:'5%,5%'}} />
+        </div>
         <Footer />      
       </div>
     );

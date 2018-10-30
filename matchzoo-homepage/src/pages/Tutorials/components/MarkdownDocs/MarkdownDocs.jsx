@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown';
+//import ReactMarkdown from 'react-markdown';
 import './MarkdownDocs.scss';
+import marked from 'marked';
+import hljs from 'highlight.js';
+import python from 'highlight.js/lib/languages/python'
 
 const initialSource = `
   
@@ -36,7 +39,7 @@ test = [
 ]
 \`\`\`
 
-Preprocess your input data in three lines of code, keep track parameters to be passed into the model.
+Preprocess your input data in three lines of code, keep track parameters to be passed into the model.  
 
 \`\`\`python
 dssm_preprocessor = preprocessor.DSSMPreprocessor()
@@ -45,9 +48,9 @@ processed_te = dssm_preprocessor.fit_transform(test, stage='test')
 # DSSM expect dimensionality of letter-trigrams as input shape.
 # The fitted parameters has been stored in \`context\` during preprocessing on training data.
 input_shapes = processed_tr.context['input_shapes']
-\`\`\`
+\`\`\`  
 
-Use MatchZoo \`generators\` module to generate \`point-wise\`, \`pair-wise\` or \`list-wise\` inputs into batches.
+Use MatchZoo \`generators\` module to generate \`point-wise\`, \`pair-wise\` or \`list-wise\` inputs into batches.  
 
 \`\`\`python
 generator_tr = generators.PointGenerator(processed_tr)
@@ -56,7 +59,7 @@ generator_te = generators.PointGenerator(processed_te)
 X_te, y_te = generator_te[0]
 \`\`\`
 
-Train a [Deep Semantic Structured Model](https://www.microsoft.com/en-us/research/project/dssm/), make predictions on test data.
+Train a [Deep Semantic Structured Model](https://www.microsoft.com/en-us/research/project/dssm/), make predictions on test data.  
 
 \`\`\`python
 dssm_model = models.DSSMModel()
@@ -77,20 +80,28 @@ If you're interested in the cutting-edge research progress, please take a look a
 
 MatchZoo is dependent on [Keras](https://github.com/keras-team/keras), please install one of its backend engines: TensorFlow, Theano, or CNTK. We recommend the TensorFlow backend. Two ways to install MatchZoo:
 
-**Install MatchZoo from Pypi:**
+**Install MatchZoo from Pypi:**  
 
-\`\`\`python
+\`\`\`python  
 pip install matchzoo
 \`\`\`
 
-**Install MatchZoo from the Github source:**
+**Install MatchZoo from the Github source:**  
 
-\`\`\`python
+\`\`\`python  
 git clone https://github.com/NTMC-Community/MatchZoo.git
 cd MatchZoo
 python setup.py install
 \`\`\`
 `;
+hljs.registerLanguage('python', python);
+marked.setOptions({
+  highlight: code => hljs.highlightAuto(code).value,
+});
+
+const output = marked(initialSource);
+
+
 
 export default class MarkdownDocs extends Component {
   static displayName = 'MarkdownDocs';
@@ -106,8 +117,9 @@ export default class MarkdownDocs extends Component {
 
   render() {
     return (
-      <div>
-        <ReactMarkdown className="markdown-docs-body" source={initialSource} />
+      <div style={{margin:'5%,5%',align:"center"}}> 
+        {/* <ReactMarkdown className="markdown-docs-body" source={initialSource} /> */}
+        <div dangerouslySetInnerHTML={{ __html: output }} />
       </div>
     );
   }
